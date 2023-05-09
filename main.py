@@ -83,6 +83,7 @@ def image_eq_clahe():
         if choice_color == 'Grayscale':
             output_image = cv2.imdecode(image_raw_bytes, cv2.IMREAD_GRAYSCALE)
             output_image = cv2.equalizeHist(output_image)
+
         elif choice_color == 'Color':
             output_image = cv2.imdecode(image_raw_bytes, cv2.IMREAD_COLOR)
             output_image = cv2.cvtColor(output_image, cv2.COLOR_BGR2HSV)
@@ -116,12 +117,20 @@ def image_eq_clahe():
 # Streamlit GUI
 st.title('Computer Vision Image Histogram Equalization')
 
-choice_1 = st.radio('What would you like to do?', ['Nothing for Now', 'Image Histogram Equalization'])
+choice_1 = st.radio('What would you like to do?', ['Nothing', 'Image Histogram Equalization'])
 
 if choice_1 == 'Image Histogram Equalization':
+
     choice_eq = st.selectbox('Specify equalization type:',
-                             ['Automatic Equalization', 'Contrast Limited Adaptive Histogram Equalization'])
-    choice_color = st.selectbox('Desired output:', ['Color', 'Grayscale'])
+                             ['Automatic Equalization', 'Contrast Limited Adaptive Histogram Equalization'],
+                             help="Automatic Equalization distributes color hue based on pixel intensity. " \
+                                  "By using Contrast Limited Adaptive Histogram Equalization (CLAHE), " \
+                                  "you can manually adjust the amount of light and its distribution " \
+                                  "to get the best result.")
+
+    choice_color = st.selectbox('Desired output:', ['Color', 'Grayscale'],
+                                help="Select 'Color' to keep the input image in color. "
+                                     "Select 'Grayscale' to convert it to black & white.")
 
     if choice_eq == 'Automatic Equalization':
         image_eq_basic()
