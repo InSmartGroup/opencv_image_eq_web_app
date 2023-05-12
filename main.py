@@ -62,7 +62,7 @@ def image_eq_clahe():
     source_image = st.file_uploader('Upload an image', type=['JPG', 'JPEG', 'PNG'])
 
     # Placeholders for future use
-    imageholder_1, imageholder_2 = st.columns([1, 2])
+    imageholder_1, imageholder_2 = st.columns([1, 1])
     sliderholders = st.columns(2)
 
     # When image is uploaded
