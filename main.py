@@ -10,7 +10,7 @@ def image_eq_basic():
     source_image = st.file_uploader('Upload an image', type=['JPG', 'JPEG', 'PNG'])
 
     # Placeholders for future use
-    imageholder_1, imageholder_2 = st.columns([1, 2])
+    imageholder_1, imageholder_2 = st.columns([1, 1])
     histholder_1, histholder_2 = st.columns([1, 1])
 
     # When image is uploaded
@@ -98,6 +98,7 @@ def image_eq_clahe():
 
         if choice_hist:
             histholder_1, histholder_2 = st.columns([1, 1])
+
             hist_1 = plt.figure(figsize=(5, 5))
             plt.hist(source_image.flatten(), bins=255, range=[0, 256])
             plt.xlabel('Pixel intensity')
@@ -111,7 +112,7 @@ def image_eq_clahe():
             histholder_1.pyplot(fig=hist_1)
             histholder_2.pyplot(fig=hist_2)
 
-        st.text(f"Total: {source_image.shape[0] * source_image.shape[1]} pixels.")
+        st.info(f"Total: {source_image.shape[0] * source_image.shape[1]} pixels.")
 
 
 # Streamlit GUI
