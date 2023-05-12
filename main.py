@@ -115,6 +115,8 @@ def image_eq_clahe():
 
 
 # Streamlit GUI
+st.set_page_config(layout="wide")
+
 st.title('Computer Vision Image Histogram Equalization')
 
 choice_1 = st.radio('What would you like to do?', ['Nothing', 'Image Histogram Equalization'])
